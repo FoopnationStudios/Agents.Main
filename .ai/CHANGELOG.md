@@ -1,5 +1,13 @@
 # Governance Changelog
 
+## 1.0.2 — 2026-09-10
+
+Security/maintenance patch:
+
+- update the immutable `actions/checkout` pin from 5.1.0 to 7.0.1 after verifying the exact v7.0.1 tag commit and a successful Dependabot governance run;
+- include `.ai/STATUS.md` in governance-version consistency enforcement;
+- add unit coverage for governance-version marker consistency.
+
 ## 1.0.1 — 2026-09-10
 
 Baseline consistency correction:

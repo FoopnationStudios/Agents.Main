@@ -3,7 +3,7 @@
 Initialization-State: BASELINE
 Repository: FoopnationStudios/Agents.Main
 Primary-Owner: @FoopnationStudios
-Governance-Version: 1.0.1
+Governance-Version: 1.0.2
 
 ## Purpose
 

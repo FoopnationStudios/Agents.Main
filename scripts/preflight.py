@@ -136,7 +136,7 @@ def run_checks(ci: bool = False) -> tuple[list[str], list[str]]:
     version = read_text(".ai/VERSION").strip()
     if not SEMVER_RE.fullmatch(version):
         errors.append(".ai/VERSION must contain semantic version X.Y.Z")
-    for rel in ("AGENTS.md", ".ai/PROJECT.md"):
+    for rel in ("AGENTS.md", ".ai/PROJECT.md", ".ai/STATUS.md"):
         if f"Governance-Version: {version}" not in read_text(rel):
             errors.append(f"{rel}: Governance-Version does not match .ai/VERSION ({version})")
 
