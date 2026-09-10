@@ -1,6 +1,6 @@
 # AGENTS.md
 
-Governance-Version: 1.0.0
+Governance-Version: 1.0.1
 
 This file is the root controller for this repository. Keep it short. Detailed policy and project context live under `.ai/`.
 
