@@ -73,4 +73,4 @@ The current governance version is stored in `.ai/VERSION`. Governance changes sh
 
 ## License
 
-No open-source license is granted by this repository by default. Add an appropriate license deliberately before distributing the framework beyond people you have separately authorized to use it.
+Agents.Main is released under the MIT License. See `LICENSE` for the full terms.
