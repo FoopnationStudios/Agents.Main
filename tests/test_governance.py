@@ -13,6 +13,12 @@ class GovernanceUnitTests(unittest.TestCase):
         version = (ROOT / ".ai/VERSION").read_text(encoding="utf-8").strip()
         self.assertRegex(version, preflight.SEMVER_RE)
 
+    def test_governance_version_markers_match(self):
+        version = (ROOT / ".ai/VERSION").read_text(encoding="utf-8").strip()
+        for rel in ("AGENTS.md", ".ai/PROJECT.md", ".ai/STATUS.md"):
+            text = (ROOT / rel).read_text(encoding="utf-8")
+            self.assertIn(f"Governance-Version: {version}", text, rel)
+
     def test_pinned_action_is_accepted(self):
         yaml = "uses: actions/checkout@" + ("a" * 40) + "\n"
         self.assertEqual(preflight.workflow_violations(yaml, "test.yml"), [])
