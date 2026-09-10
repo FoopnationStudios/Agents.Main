@@ -55,7 +55,7 @@ After the first successful `Governance / policy` run, configure a ruleset for th
 - require the `Governance / policy` status check;
 - require conversation resolution;
 - block force pushes and branch deletion;
-- require CODEOWNERS review for control-plane changes when the account/plan supports it;
+- require CODEOWNERS review for control-plane changes only when there is an independent trusted reviewer; do not create a self-review deadlock in a solo repository;
 - enable secret scanning and push protection when available;
 - set GitHub Actions to least-privilege defaults and require actions to be pinned to full commit SHAs when available.
 

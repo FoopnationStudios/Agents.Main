@@ -1,0 +1,8 @@
+# TEMPLATE USERS: replace @FoopnationStudios with the actual responsible user/team.
+# These entries route sensitive control-plane changes; they do not own all product code.
+/AGENTS.md @FoopnationStudios
+/.ai/ @FoopnationStudios
+/.github/workflows/ @FoopnationStudios
+/.github/copilot-instructions.md @FoopnationStudios
+/scripts/ @FoopnationStudios
+/tests/test_governance.py @FoopnationStudios

@@ -1,0 +1,3 @@
+# One repository-relative path to an approved nested AGENTS.md per line.
+# Example: packages/mobile/AGENTS.md
+# The root AGENTS.md is always allowed and must not be listed here.
