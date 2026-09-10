@@ -4,7 +4,8 @@ Record durable decisions here when future maintainers or agents would otherwise 
 
 ## D-001 — Short root controller, modular control plane
 
-Date: 2026-09-10  
+Date: 2026-09-10
+
 Status: Accepted
 
 **Decision:** Keep `AGENTS.md` small and use it as a routing/controller document. Store detailed context and policy in focused `.ai/` files.
@@ -13,7 +14,8 @@ Status: Accepted
 
 ## D-002 — Separate behavioral policy from mechanical enforcement
 
-Date: 2026-09-10  
+Date: 2026-09-10
+
 Status: Accepted
 
 **Decision:** Agent instructions define expected behavior; Python checks, GitHub Actions, review routing, and repository rules provide independent enforcement/evidence where feasible.
@@ -22,7 +24,8 @@ Status: Accepted
 
 ## D-003 — CI does not execute commands parsed from Markdown
 
-Date: 2026-09-10  
+Date: 2026-09-10
+
 Status: Accepted
 
 **Decision:** `.ai/PROJECT.md` documents project validation commands for agents, but the governance workflow does not parse that file and execute arbitrary command strings. Project-specific CI must be encoded explicitly in reviewed workflow/script files.
@@ -31,7 +34,8 @@ Status: Accepted
 
 ## D-004 — Immutable external Action references
 
-Date: 2026-09-10  
+Date: 2026-09-10
+
 Status: Accepted
 
 **Decision:** External GitHub Actions must be pinned to full commit SHAs. `docker://` images must use a `sha256` digest. Local actions remain allowed.
@@ -40,7 +44,8 @@ Status: Accepted
 
 ## D-005 — Derived repositories fail until initialized
 
-Date: 2026-09-10  
+Date: 2026-09-10
+
 Status: Accepted
 
 **Decision:** Repositories created from this template must set `Initialization-State: ACTIVE`, declare their actual `owner/name`, and replace the template CODEOWNERS identity before the governance gate passes.
@@ -49,7 +54,8 @@ Status: Accepted
 
 ## D-006 — Nested agent instructions are explicit
 
-Date: 2026-09-10  
+Date: 2026-09-10
+
 Status: Accepted
 
 **Decision:** Tracked nested `AGENTS.md` files must be registered in `.ai/nested-agents.txt`, and tracked `AGENTS.override.md` files are prohibited.
