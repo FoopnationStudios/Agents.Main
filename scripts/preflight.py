@@ -26,6 +26,7 @@ REQUIRED_FILES = (
     ".ai/SECURITY_RULES.md",
     ".ai/ARCHITECTURE.md",
     ".ai/DEFINITION_OF_DONE.md",
+    ".ai/DECISIONS.md",
     ".ai/CHANGE_CONTROL.md",
     ".ai/CHANGELOG.md",
     ".ai/nested-agents.txt",

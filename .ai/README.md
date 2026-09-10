@@ -25,12 +25,13 @@ File responsibilities:
 - `SECURITY_RULES.md` — trust boundaries, credentials, dependencies, workflows, network, and destructive actions.
 - `ARCHITECTURE.md` — project architecture and governance integration points.
 - `DEFINITION_OF_DONE.md` — objective completion criteria.
+- `DECISIONS.md` — durable architectural/governance decisions and their rationale.
 - `CHANGE_CONTROL.md` — how to modify this control plane safely.
 - `CHANGELOG.md` — human-readable governance release history.
 - `nested-agents.txt` — explicit allowlist for deeper `AGENTS.md` files.
 
 ## Update discipline
 
-Durable facts belong in `PROJECT.md` or `ARCHITECTURE.md`. Fast-changing facts belong in `STATUS.md`. New policy belongs in the narrowest policy file that owns that concern. Do not grow `AGENTS.md` into a monolithic manual.
+Durable facts belong in `PROJECT.md` or `ARCHITECTURE.md`. Fast-changing facts belong in `STATUS.md`. Architectural or governance decisions that future agents should not have to rediscover belong in `DECISIONS.md`. New policy belongs in the narrowest policy file that owns that concern. Do not grow `AGENTS.md` into a monolithic manual.
 
 If a rule becomes obsolete, replace or remove it explicitly and update the governance version when required. Contradictory rules are defects, not an invitation for the agent to guess.
