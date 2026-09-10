@@ -1,5 +1,13 @@
 # Governance Changelog
 
+## 1.0.1 — 2026-09-10
+
+Baseline consistency correction:
+
+- add the durable `.ai/DECISIONS.md` log referenced by the framework documentation;
+- require the decision log in mechanical preflight;
+- synchronize governance version markers and mark the repository code baseline ready.
+
 ## 1.0.0 — 2026-09-10
 
 Initial production baseline:
