@@ -1,12 +1,12 @@
 # Current Operating State
 
-Last-Updated: 2026-09-10
-Governance-Version: 1.0.2
+Last-Updated: 2026-09-15
+Governance-Version: 1.1.0
 State: BASELINE_CODE_READY
 
 ## Current objective
 
-Establish Agents.Main as the reusable baseline for future AI-assisted development projects.
+Maintain Agents.Main as the reusable baseline for future AI-assisted development projects, including an explicit specialist-software-agent project mode.
 
 ## Current priorities
 
@@ -15,6 +15,7 @@ Establish Agents.Main as the reusable baseline for future AI-assisted developmen
 3. Enforce basic governance integrity in GitHub Actions without executing arbitrary project commands from documentation.
 4. Protect the control plane against accidental drift, prompt injection, secret exposure, and unsafe workflow configuration.
 5. Keep project-specific customization concentrated in a small number of obvious files.
+6. Ensure derived repositories explicitly classify themselves as `GENERAL_SOFTWARE` or `SPECIALIST_AGENT` and load the appropriate policy automatically.
 
 ## Known manual setup outside repository contents
 
