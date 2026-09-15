@@ -62,6 +62,16 @@ Status: Accepted
 
 **Reason:** Deeper agent files can change instruction precedence. Making their existence explicit reduces accidental or malicious policy shadowing.
 
+## D-007 — Specialist-agent architecture is an explicit project mode
+
+Date: 2026-09-15
+
+Status: Accepted
+
+**Decision:** Derived repositories must explicitly classify themselves as either `GENERAL_SOFTWARE` or `SPECIALIST_AGENT`. Specialist-agent projects automatically load `.ai/SPECIALIST_AGENT.md`, which separates AI judgment from deterministic enforcement, authoritative data, persistent state, validation, and interface concerns.
+
+**Reason:** Bounded software agents need stronger architectural guidance than general-purpose software projects, but placing that doctrine directly in the root `AGENTS.md` would violate the short-controller design. Explicit classification makes the mode durable, inherited by template copies, and mechanically checkable without forcing every project to use agent architecture.
+
 ## Superseding a decision
 
 Do not erase history simply because a decision changes. Mark the old entry `Superseded`, reference the replacement decision, and add the new rationale. If the change affects governance behavior, follow `.ai/CHANGE_CONTROL.md` and version it appropriately.
