@@ -13,6 +13,8 @@ import sys
 ROOT = Path(__file__).resolve().parents[1]
 ORIGIN_REPOSITORY = "FoopnationStudios/Agents.Main"
 ORIGIN_OWNER_TOKEN = "@FoopnationStudios"
+ORIGIN_PROJECT_TYPE = "TEMPLATE"
+ALLOWED_DERIVED_PROJECT_TYPES = {"GENERAL_SOFTWARE", "SPECIALIST_AGENT"}
 
 REQUIRED_FILES = (
     "AGENTS.md",
@@ -21,6 +23,7 @@ REQUIRED_FILES = (
     ".ai/PROJECT.md",
     ".ai/STATUS.md",
     ".ai/PROCESS.md",
+    ".ai/SPECIALIST_AGENT.md",
     ".ai/PREFLIGHT.md",
     ".ai/ANTI_DRIFT.md",
     ".ai/SECURITY_RULES.md",
@@ -143,6 +146,7 @@ def run_checks(ci: bool = False) -> tuple[list[str], list[str]]:
     project = read_text(".ai/PROJECT.md")
     state = parse_project_field(project, "Initialization-State")
     declared_repo = parse_project_field(project, "Repository")
+    project_type = parse_project_field(project, "Project-Type")
     current_repo = os.environ.get("GITHUB_REPOSITORY")
     if current_repo:
         if current_repo == ORIGIN_REPOSITORY:
@@ -150,11 +154,16 @@ def run_checks(ci: bool = False) -> tuple[list[str], list[str]]:
                 errors.append("template origin must use Initialization-State: BASELINE")
             if declared_repo != ORIGIN_REPOSITORY:
                 errors.append("template origin Repository field is incorrect")
+            if project_type != ORIGIN_PROJECT_TYPE:
+                errors.append(f"template origin must use Project-Type: {ORIGIN_PROJECT_TYPE}")
         else:
             if state != "ACTIVE":
                 errors.append("derived repository must set Initialization-State: ACTIVE in .ai/PROJECT.md")
             if declared_repo != current_repo:
                 errors.append(f"derived repository must set Repository: {current_repo} in .ai/PROJECT.md")
+            if project_type not in ALLOWED_DERIVED_PROJECT_TYPES:
+                allowed = ", ".join(sorted(ALLOWED_DERIVED_PROJECT_TYPES))
+                errors.append(f"derived repository must set Project-Type to one of: {allowed}")
             codeowners = read_text(".github/CODEOWNERS")
             if ORIGIN_OWNER_TOKEN in codeowners:
                 errors.append("derived repository must replace template CODEOWNERS entries")
