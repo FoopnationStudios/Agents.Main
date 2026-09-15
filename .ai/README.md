@@ -8,18 +8,20 @@ Read order for a normal mutating task:
 2. `PROJECT.md`
 3. `STATUS.md`
 4. `PROCESS.md`
-5. `PREFLIGHT.md`
-6. `ANTI_DRIFT.md`
-7. `SECURITY_RULES.md`
-8. `DEFINITION_OF_DONE.md`
-9. `ARCHITECTURE.md` when structurally relevant
+5. `SPECIALIST_AGENT.md` when `PROJECT.md` declares `Project-Type: SPECIALIST_AGENT`
+6. `PREFLIGHT.md`
+7. `ANTI_DRIFT.md`
+8. `SECURITY_RULES.md`
+9. `DEFINITION_OF_DONE.md`
+10. `ARCHITECTURE.md` when structurally relevant
 
 File responsibilities:
 
 - `VERSION` — governance semantic version.
-- `PROJECT.md` — durable project identity, owner, constraints, commands, protected areas, and operating assumptions.
+- `PROJECT.md` — durable project identity, project type, owner, constraints, commands, protected areas, and operating assumptions.
 - `STATUS.md` — current milestone, live priorities, known blockers, and near-term operating state.
 - `PROCESS.md` — canonical request-to-handoff state machine.
+- `SPECIALIST_AGENT.md` — conditional architecture and operating standard for repositories classified as `SPECIALIST_AGENT`.
 - `PREFLIGHT.md` — risk tiers, stop conditions, and mandatory pre-mutation questions.
 - `ANTI_DRIFT.md` — scope containment and anti-churn policy.
 - `SECURITY_RULES.md` — trust boundaries, credentials, dependencies, workflows, network, and destructive actions.

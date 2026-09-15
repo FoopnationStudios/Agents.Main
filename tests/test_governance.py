@@ -36,8 +36,19 @@ class GovernanceUnitTests(unittest.TestCase):
         self.assertTrue(any("write-all" in item for item in errors))
 
     def test_project_field_parser(self):
-        text = "Initialization-State: ACTIVE\nRepository: owner/repo\n"
+        text = "Initialization-State: ACTIVE\nRepository: owner/repo\nProject-Type: SPECIALIST_AGENT\n"
         self.assertEqual(preflight.parse_project_field(text, "Repository"), "owner/repo")
+        self.assertEqual(preflight.parse_project_field(text, "Project-Type"), "SPECIALIST_AGENT")
+
+    def test_specialist_agent_policy_is_required(self):
+        self.assertIn(".ai/SPECIALIST_AGENT.md", preflight.REQUIRED_FILES)
+
+    def test_derived_project_types_are_explicit(self):
+        self.assertEqual(
+            preflight.ALLOWED_DERIVED_PROJECT_TYPES,
+            {"GENERAL_SOFTWARE", "SPECIALIST_AGENT"},
+        )
+        self.assertEqual(preflight.ORIGIN_PROJECT_TYPE, "TEMPLATE")
 
     def test_inline_pull_request_target_is_rejected(self):
         errors = preflight.workflow_violations("on: [pull_request, pull_request_target]\n", "test.yml")

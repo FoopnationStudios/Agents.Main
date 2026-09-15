@@ -3,15 +3,25 @@
 Initialization-State: BASELINE
 Repository: FoopnationStudios/Agents.Main
 Primary-Owner: @FoopnationStudios
-Governance-Version: 1.0.2
+Governance-Version: 1.1.0
+Project-Type: TEMPLATE
 
 ## Purpose
 
-Agents.Main is the canonical reusable governance template for AI-assisted project development. It provides an agent boot process, preflight and postflight controls, anti-drift rules, security boundaries, and GitHub CI policy checks.
+Agents.Main is the canonical reusable governance template for AI-assisted project development. It provides an agent boot process, preflight and postflight controls, anti-drift rules, security boundaries, GitHub CI policy checks, and an optional specialist-software-agent operating standard.
 
 ## Current lifecycle
 
-Framework baseline. This repository is the template origin, so `Initialization-State: BASELINE` is valid here. Any repository created from this template must change the state to `ACTIVE` and replace the repository and owner fields before its governance check can pass.
+Framework baseline. This repository is the template origin, so `Initialization-State: BASELINE` and `Project-Type: TEMPLATE` are valid here. Any repository created from this template must change the state to `ACTIVE`, replace the repository and owner fields, and classify itself as either `GENERAL_SOFTWARE` or `SPECIALIST_AGENT` before its governance check can pass.
+
+## Project classification
+
+Derived repositories must use exactly one of these values:
+
+- `Project-Type: GENERAL_SOFTWARE` — ordinary software development governed by the standard control plane.
+- `Project-Type: SPECIALIST_AGENT` — dedicated software performing a bounded repeatable workflow using AI reasoning plus deterministic software, authoritative data/tools, persistent state where needed, validation, and a fit-for-purpose interface. These projects must apply `.ai/SPECIALIST_AGENT.md`.
+
+The template origin alone uses `Project-Type: TEMPLATE`.
 
 ## Technology and runtime
 
@@ -40,6 +50,7 @@ These commands are trusted project documentation for agents. CI does not parse a
 - External GitHub Actions must be pinned to full commit SHAs.
 - The default governance workflow must run with read-only repository permissions and no project secrets.
 - Framework defaults must be secure enough for public repositories and adaptable to private repositories.
+- `SPECIALIST_AGENT` is an explicit project architecture, not a label automatically applied to every software repository.
 
 ## Protected/high-risk surfaces
 
@@ -61,9 +72,11 @@ When this template is copied:
 1. Set `Initialization-State: ACTIVE`.
 2. Set `Repository:` to the exact `owner/name` value.
 3. Set `Primary-Owner:` to the responsible GitHub user or team.
-4. Update `.github/CODEOWNERS`.
-5. Replace this purpose/lifecycle/technology section with project facts.
-6. Add real setup, build, test, lint, type-check, security, and run commands.
-7. Update `.ai/ARCHITECTURE.md` and `.ai/STATUS.md`.
-8. Run the preflight and postflight scripts.
-9. Configure repository rules and security settings before treating `main` as protected production source of truth.
+4. Set `Project-Type:` to `GENERAL_SOFTWARE` or `SPECIALIST_AGENT` based on the actual product architecture.
+5. Update `.github/CODEOWNERS`.
+6. Replace this purpose/lifecycle/technology section with project facts.
+7. If `Project-Type: SPECIALIST_AGENT`, define or reference the Agent Contract required by `.ai/SPECIALIST_AGENT.md` and reconcile the architecture accordingly.
+8. Add real setup, build, test, lint, type-check, security, and run commands.
+9. Update `.ai/ARCHITECTURE.md` and `.ai/STATUS.md`.
+10. Run the preflight and postflight scripts.
+11. Configure repository rules and security settings before treating `main` as protected production source of truth.

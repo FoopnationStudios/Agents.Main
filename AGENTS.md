@@ -1,6 +1,6 @@
 # AGENTS.md
 
-Governance-Version: 1.0.2
+Governance-Version: 1.1.0
 
 This file is the root controller for this repository. Keep it short. Detailed policy and project context live under `.ai/`.
 
@@ -19,13 +19,14 @@ For every task:
 
 1. Read this file.
 2. Read `.ai/PROJECT.md`, `.ai/STATUS.md`, and `.ai/PROCESS.md`.
-3. Read `.ai/PREFLIGHT.md` and classify the task's risk before mutation.
-4. Read `.ai/ANTI_DRIFT.md`, `.ai/SECURITY_RULES.md`, and `.ai/DEFINITION_OF_DONE.md` for any mutating task.
-5. Read `.ai/ARCHITECTURE.md` when the task touches structure, interfaces, dependencies, data flow, deployment, or cross-component behavior.
-6. Inspect the actual repository state relevant to the request. Do not rely on stale summaries when code or configuration can be checked directly.
-7. If the environment permits command execution, run `python3 scripts/preflight.py` before edits. In constrained environments, perform the documented preflight manually and state that the script could not be run.
-8. Establish the smallest authorized change set and validation plan.
-9. Only then modify files or invoke write-capable tools.
+3. If `.ai/PROJECT.md` declares `Project-Type: SPECIALIST_AGENT`, read and apply `.ai/SPECIALIST_AGENT.md` before planning or implementation.
+4. Read `.ai/PREFLIGHT.md` and classify the task's risk before mutation.
+5. Read `.ai/ANTI_DRIFT.md`, `.ai/SECURITY_RULES.md`, and `.ai/DEFINITION_OF_DONE.md` for any mutating task.
+6. Read `.ai/ARCHITECTURE.md` when the task touches structure, interfaces, dependencies, data flow, deployment, or cross-component behavior.
+7. Inspect the actual repository state relevant to the request. Do not rely on stale summaries when code or configuration can be checked directly.
+8. If the environment permits command execution, run `python3 scripts/preflight.py` before edits. In constrained environments, perform the documented preflight manually and state that the script could not be run.
+9. Establish the smallest authorized change set and validation plan.
+10. Only then modify files or invoke write-capable tools.
 
 Read-only questions use the same context-loading rules but do not require a mutation preflight unless the answer depends on repository safety or integrity.
 
