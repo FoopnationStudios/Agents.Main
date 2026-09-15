@@ -12,18 +12,31 @@ Every mutating task follows the same state machine:
 
 The framework separates instruction from enforcement. Markdown establishes agent behavior; `scripts/preflight.py`, `scripts/postflight.py`, GitHub Actions, CODEOWNERS, and repository rules provide mechanical checks and review gates.
 
+## Project modes
+
+Derived repositories must explicitly classify themselves in `.ai/PROJECT.md`:
+
+- `Project-Type: GENERAL_SOFTWARE` — standard AI-assisted software development using the core governance framework.
+- `Project-Type: SPECIALIST_AGENT` — a dedicated software product performing one bounded repeatable workflow. The root controller automatically loads `.ai/SPECIALIST_AGENT.md`, which requires deliberate separation of AI judgment, deterministic enforcement, authoritative data/tools, durable state, validation, and operator interface.
+
+The template origin alone uses `Project-Type: TEMPLATE`.
+
+A project owner does not need a special agent-bootstrap prompt. When a derived project is classified as `SPECIALIST_AGENT`, normal controller adoption and the standard `AGENTS.md` boot sequence load the specialist policy automatically.
+
 ## Use this as a project template
 
 1. Create a repository from this template.
 2. Update `.ai/PROJECT.md` and set `Initialization-State: ACTIVE`.
 3. Replace the repository and owner values in `.ai/PROJECT.md`.
-4. Replace the entries in `.github/CODEOWNERS` with the new repository's actual owner or team.
-5. Rewrite the project-specific section of `.ai/ARCHITECTURE.md` and update `.ai/STATUS.md`.
-6. Add project-specific build, test, lint, type-check, and security commands to `.ai/PROJECT.md`. These commands are documentation for agents; the governance workflow deliberately does not execute arbitrary commands read from Markdown.
-7. Run `python3 scripts/preflight.py` and `python3 scripts/postflight.py`.
-8. Configure the GitHub repository protections described below before production work begins.
+4. Set `Project-Type:` to `GENERAL_SOFTWARE` or `SPECIALIST_AGENT`.
+5. Replace the entries in `.github/CODEOWNERS` with the new repository's actual owner or team.
+6. Rewrite the project-specific section of `.ai/ARCHITECTURE.md` and update `.ai/STATUS.md`.
+7. If the project is a `SPECIALIST_AGENT`, define or reference its Agent Contract and reconcile the architecture against `.ai/SPECIALIST_AGENT.md`.
+8. Add project-specific build, test, lint, type-check, and security commands to `.ai/PROJECT.md`. These commands are documentation for agents; the governance workflow deliberately does not execute arbitrary commands read from Markdown.
+9. Run `python3 scripts/preflight.py` and `python3 scripts/postflight.py`.
+10. Configure the GitHub repository protections described below before production work begins.
 
-Derived repositories fail the governance check if they retain this template's initialization state or repository identity.
+Derived repositories fail the governance check if they retain this template's initialization state, repository identity, template project type, or CODEOWNERS identity.
 
 ## Agent entrypoints
 
@@ -35,8 +48,9 @@ For an AI client that does not natively discover repository instructions, begin 
 
 - `AGENTS.md` — short root controller and mandatory boot sequence.
 - `.ai/PROCESS.md` — canonical task state machine.
-- `.ai/PROJECT.md` — project identity, constraints, ownership, and validation commands.
+- `.ai/PROJECT.md` — project identity, type, constraints, ownership, and validation commands.
 - `.ai/STATUS.md` — current operating state and priorities.
+- `.ai/SPECIALIST_AGENT.md` — conditional specialist-software-agent architecture and operating standard.
 - `.ai/PREFLIGHT.md` — risk classification and checks before mutation.
 - `.ai/ANTI_DRIFT.md` — scope discipline and anti-refactor rules.
 - `.ai/SECURITY_RULES.md` — prompt-injection, credential, workflow, dependency, and destructive-action rules.
