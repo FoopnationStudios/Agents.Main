@@ -1,5 +1,24 @@
 # Governance Changelog
 
+## 1.1.0 — 2026-09-15
+
+Compatible governance feature release:
+
+- add `.ai/SPECIALIST_AGENT.md` as the canonical architecture and operating standard for bounded software-backed AI agents;
+- add explicit `Project-Type` classification to `.ai/PROJECT.md`;
+- require derived repositories to classify as `GENERAL_SOFTWARE` or `SPECIALIST_AGENT` during initialization;
+- automatically route `SPECIALIST_AGENT` projects through the specialist-agent standard from the root `AGENTS.md` boot sequence;
+- require the specialist-agent policy file in mechanical preflight;
+- add governance tests for the new classification and required policy;
+- preserve the short-root-controller design by keeping detailed specialist policy under `.ai/` rather than expanding `AGENTS.md` into a monolith.
+
+Migration for repositories intentionally upgrading from an earlier Agents.Main baseline:
+
+1. add `.ai/SPECIALIST_AGENT.md` from the 1.1.0 template;
+2. add `Project-Type: GENERAL_SOFTWARE` or `Project-Type: SPECIALIST_AGENT` to `.ai/PROJECT.md`;
+3. if classified `SPECIALIST_AGENT`, define or reference the Agent Contract and reconcile the project architecture against the specialist standard;
+4. synchronize governance-version markers and run the governance preflight/tests/postflight.
+
 ## 1.0.2 — 2026-09-10
 
 Security/maintenance patch:
