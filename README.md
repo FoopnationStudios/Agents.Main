@@ -87,4 +87,4 @@ The current governance version is stored in `.ai/VERSION`. Governance changes sh
 
 ## License
 
-Agents.Main is released under the MIT License. See `LICENSE` for the full terms.
+Agents.Main is proprietary software owned by FoopNation Studios. All rights are reserved. Unauthorized use, copying, modification, distribution, sublicensing, or sale is prohibited except with express written authorization from FoopNation Studios. See `LICENSE` for the full terms.
